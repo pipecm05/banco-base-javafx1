@@ -3,30 +3,68 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.*?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="co.edu.uniquindio.banco.controlador.PanelClienteControlador"
-      prefHeight="600.0" prefWidth="800.0" spacing="30.0" style="-fx-padding: 30" >
+      prefHeight="600.0" prefWidth="800.0" spacing="20.0" style="-fx-padding: 20">
 
-    <Label fx:id="lblBienvenida" text="Bienvenido" >
-        <font>
-            <Font size="24.0" />
-        </font>
-    </Label>
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <ImageView fitHeight="50.0" fitWidth="50.0">
+            <image>
+                <Image url="@img/user-icon.png" />
+            </image>
+        </ImageView>
+        <VBox>
+            <Label fx:id="lblBienvenida" style="-fx-font-size: 16px; -fx-font-weight: bold;">
+                <padding>
+                    <Insets bottom="5" />
+                </padding>
+            </Label>
+            <Label fx:id="lblBilletera" style="-fx-font-size: 14px; -fx-text-fill: #666;" />
+        </VBox>
+    </HBox>
 
-    <TabPane tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-            <Tab text="Resumen">
-                <!-- Contenido del resumen -->
-            </Tab>
-            <Tab text="Transferencias">
-                <!-- Contenido de transferencias -->
-            </Tab>
-            <Tab text="Historial">
-                <!-- Contenido del historial -->
-            </Tab>
-        </tabs>
-    </TabPane>
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Actualizar Perfil" onAction="#actualizarPerfil" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
+        <Button text="Consultar Saldo" onAction="#consultarSaldo" style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+        <Button text="Realizar Transferencia" onAction="#mostrarTransferencia" style="-fx-background-color: #FF9800; -fx-text-fill: white;" />
+        <Button text="Cerrar Sesión" onAction="#cerrarSesion" style="-fx-background-color: #F44336; -fx-text-fill: white;" />
+    </HBox>
+
+    <Label text="Historial de Transacciones" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <TableView fx:id="tblTransacciones" prefHeight="300.0">
+        <columns>
+            <TableColumn text="Fecha" prefWidth="150">
+                <cellValueFactory>
+                    <PropertyValueFactory property="fecha" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Tipo" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="tipo" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Monto" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="monto" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Destino" prefWidth="150">
+                <cellValueFactory>
+                    <PropertyValueFactory property="billeteraDestino" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Categoría" prefWidth="120">
+                <cellValueFactory>
+                    <PropertyValueFactory property="categoria" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
 
 </VBox>
