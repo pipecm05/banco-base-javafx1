@@ -1,5 +1,7 @@
 package co.edu.uniquindio.banco.modelo.entidades;
 
+// ... imports anteriores ...
+
 import co.edu.uniquindio.banco.config.Constantes;
 import co.edu.uniquindio.banco.modelo.enums.Categoria;
 import co.edu.uniquindio.banco.modelo.vo.PorcentajeGastosIngresos;
@@ -12,21 +14,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Clase que representa un banco con usuarios y billeteras
- * @version 1.0
- * @author caflorezvi
- */
 @Getter
 @Setter
 public class Banco {
-
+    private static Banco instancia;
     private List<Usuario> usuarios;
     private List<BilleteraVirtual> billeteras;
 
-    public Banco(){
+    private Banco() {
         this.usuarios = new ArrayList<>();
         this.billeteras = new ArrayList<>();
+    }
+
+    public static Banco getInstancia() {
+        if (instancia == null) {
+            instancia = new Banco();
+        }
+        return instancia;
     }
 
     /**

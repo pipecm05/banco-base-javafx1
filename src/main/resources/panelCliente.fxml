@@ -9,4 +9,24 @@
       fx:controller="co.edu.uniquindio.banco.controlador.PanelClienteControlador"
       prefHeight="600.0" prefWidth="800.0" spacing="30.0" style="-fx-padding: 30" >
 
+    <Label fx:id="lblBienvenida" text="Bienvenido" >
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Label>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Resumen">
+                <!-- Contenido del resumen -->
+            </Tab>
+            <Tab text="Transferencias">
+                <!-- Contenido de transferencias -->
+            </Tab>
+            <Tab text="Historial">
+                <!-- Contenido del historial -->
+            </Tab>
+        </tabs>
+    </TabPane>
+
 </VBox>

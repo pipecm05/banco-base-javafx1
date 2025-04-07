@@ -28,10 +28,10 @@ public class RegistroControlador {
     private final Banco banco;
 
     /**
-     * Constructor de la clase, inicializa el banco
+     * Constructor de la clase, inicializa el banco usando Singleton
      */
     public RegistroControlador(){
-        banco = new Banco();
+        banco = Banco.getInstancia(); // Obtenemos la instancia única del banco
     }
 
     /**
@@ -39,24 +39,30 @@ public class RegistroControlador {
      * @param actionEvent evento de acción
      */
     public void registrarse(ActionEvent actionEvent) {
-
         try {
+            // Validar campos vacíos
+            if(txtIdentificacion.getText().isEmpty() || txtNombre.getText().isEmpty() ||
+                    txtCorreo.getText().isEmpty() || txtDireccion.getText().isEmpty() ||
+                    txtPassword.getText().isEmpty()) {
+                crearAlerta("Todos los campos son obligatorios", Alert.AlertType.WARNING);
+                return;
+            }
+
             // Se intenta agregar el usuario al banco
             banco.registrarUsuario(
                     txtIdentificacion.getText(),
                     txtNombre.getText(),
                     txtDireccion.getText(),
                     txtCorreo.getText(),
-                    txtPassword.getText() );
+                    txtPassword.getText());
 
             // Se muestra un mensaje de éxito y se cierra la ventana
             crearAlerta("Usuario registrado correctamente", Alert.AlertType.INFORMATION);
             cerrarVentana();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             crearAlerta(e.getMessage(), Alert.AlertType.ERROR);
         }
-
     }
 
     /**
@@ -64,7 +70,7 @@ public class RegistroControlador {
      * @param mensaje mensaje a mostrar
      * @param tipo tipo de alerta
      */
-    public void crearAlerta(String mensaje, Alert.AlertType tipo){
+    public void crearAlerta(String mensaje, Alert.AlertType tipo) {
         Alert alert = new Alert(tipo);
         alert.setTitle("Alerta");
         alert.setHeaderText(null);
@@ -75,7 +81,7 @@ public class RegistroControlador {
     /**
      * Método que se encarga de cerrar la ventana actual
      */
-    public void cerrarVentana(){
+    public void cerrarVentana() {
         Stage stage = (Stage) txtIdentificacion.getScene().getWindow();
         stage.close();
     }

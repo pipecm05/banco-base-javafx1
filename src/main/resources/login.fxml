@@ -9,4 +9,22 @@
       fx:controller="co.edu.uniquindio.banco.controlador.LoginControlador"
       prefHeight="400.0" prefWidth="400.0" alignment="center" spacing="30.0" >
 
+    <Label text="Iniciar Sesión" >
+        <font>
+            <Font size="18.0" />
+        </font>
+    </Label>
+
+    <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+        <Label text="Identificación:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="txtIdentificacion" GridPane.columnIndex="1" GridPane.rowIndex="0" minHeight="30.0" />
+
+        <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" minHeight="30.0" />
+    </GridPane>
+
+    <Button text="Iniciar Sesión" onAction="#iniciarSesion" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" />
+
+    <Label fx:id="lblMensaje" textFill="RED" visible="false" />
+
 </VBox>
