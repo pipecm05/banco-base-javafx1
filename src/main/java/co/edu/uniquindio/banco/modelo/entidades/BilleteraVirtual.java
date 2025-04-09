@@ -40,11 +40,9 @@ public class BilleteraVirtual implements Serializable {
     }
 
     public void depositar(float monto, Transaccion transaccion) throws Exception {
-
-        if (monto <= 0){
-            throw new Exception("El monto a retirar debe ser mayor a cero");
+        if (monto <= 0) {
+            throw new Exception("El monto a depositar debe ser mayor a cero");
         }
-
         saldo += monto;
         transacciones.add(transaccion);
     }

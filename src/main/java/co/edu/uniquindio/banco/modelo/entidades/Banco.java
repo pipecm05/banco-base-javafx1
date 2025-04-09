@@ -210,10 +210,14 @@ public class Banco {
      * @param monto monto a recargar
      * @throws Exception si la billetera no existe
      */
-    public void recargarBilletera(String numeroBiletera, float monto) throws Exception{
-        BilleteraVirtual billetera = buscarBilletera(numeroBiletera);
-        if(billetera == null){
+    public void recargarBilletera(String numeroBilletera, float monto) throws Exception {
+        BilleteraVirtual billetera = buscarBilletera(numeroBilletera);
+        if (billetera == null) {
             throw new Exception("La billetera no existe");
+        }
+
+        if (monto <= 0) {
+            throw new Exception("El monto debe ser mayor a cero");
         }
 
         Transaccion transaccion = new Transaccion(
@@ -221,9 +225,9 @@ public class Banco {
                 monto,
                 LocalDateTime.now(),
                 Categoria.RECARGA,
+                billetera, // Origen y destino son la misma para recargas
                 billetera,
-                billetera,
-                0
+                0 // Sin comisión para recargas
         );
 
         billetera.depositar(monto, transaccion);

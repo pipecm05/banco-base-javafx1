@@ -30,7 +30,7 @@
                     <PropertyValueFactory property="fecha" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Tipo" prefWidth="100">
+            <TableColumn text="TipoTransaccion" prefWidth="100">
                 <cellValueFactory>
                     <PropertyValueFactory property="tipo" />
                 </cellValueFactory>
@@ -47,7 +47,7 @@
             </TableColumn>
             <TableColumn text="Categoría" prefWidth="120">
                 <cellValueFactory>
-                    <PropertyValueFactory property="categoria" />
+                    <PropertyValueFactory property="tipo"/> <!-- Cambiado a 'tipo' -->
                 </cellValueFactory>
             </TableColumn>
         </columns>
@@ -56,6 +56,7 @@
     <HBox spacing="10" alignment="CENTER">
         <Button text="Consultar Saldo" onAction="#consultarSaldo" style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
         <Button text="Realizar Transferencia" onAction="#mostrarTransferencia" style="-fx-background-color: #FF9800; -fx-text-fill: white;" />
+        <Button text="Recargar Cuenta" onAction="#mostrarRecarga" style="-fx-background-color: #8BC34A; -fx-text-fill: white;" />
         <Button text="Cerrar Sesión" onAction="#cerrarSesion" style="-fx-background-color: #F44336; -fx-text-fill: white;" />
     </HBox>
 

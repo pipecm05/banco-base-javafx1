@@ -55,6 +55,29 @@ public class PanelClienteControlador {
     }
 
     @FXML
+    private void mostrarRecarga() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/recarga.fxml"));
+            Parent root = loader.load();
+
+            RecargaControlador controlador = loader.getController();
+            controlador.inicializarDatos(billetera.getNumero());
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Recargar Billetera");
+            stage.setResizable(false);
+            stage.showAndWait();
+
+            // Actualizar datos después de recargar
+            cargarTransacciones();
+            lblBilletera.setText("Número de cuenta: " + billetera.getNumero() + " - Saldo: $" + billetera.consultarSaldo());
+
+        } catch (Exception e) {
+            mostrarAlerta("Error", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+    @FXML
     private void consultarSaldo() {
         try {
             float saldo = billetera.consultarSaldo();
