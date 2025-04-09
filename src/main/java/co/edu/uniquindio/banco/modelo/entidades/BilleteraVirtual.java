@@ -2,10 +2,12 @@ package co.edu.uniquindio.banco.modelo.entidades;
 
 import co.edu.uniquindio.banco.config.Constantes;
 import co.edu.uniquindio.banco.modelo.vo.PorcentajeGastosIngresos;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class BilleteraVirtual {
+public class BilleteraVirtual implements Serializable {
     private String numero;
     private float saldo;
     private Usuario usuario;

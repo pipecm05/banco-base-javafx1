@@ -1,5 +1,6 @@
 package co.edu.uniquindio.banco;
 
+import co.edu.uniquindio.banco.modelo.entidades.Banco;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,6 +28,11 @@ public class BancoApp extends Application {
     }
 
     public static void main(String[] args) {
-        launch(BancoApp.class, args);
+        launch(args);
+
+        // Guardar datos al terminar la aplicación
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            Banco.getInstancia().guardarDatos();
+        }));
     }
 }

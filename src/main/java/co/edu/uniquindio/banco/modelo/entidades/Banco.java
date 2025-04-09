@@ -1,29 +1,25 @@
 package co.edu.uniquindio.banco.modelo.entidades;
 
-// ... imports anteriores ...
-
 import co.edu.uniquindio.banco.config.Constantes;
 import co.edu.uniquindio.banco.modelo.enums.Categoria;
 import co.edu.uniquindio.banco.modelo.vo.PorcentajeGastosIngresos;
 import co.edu.uniquindio.banco.modelo.vo.SaldoTransaccionesBilletera;
-import lombok.Getter;
-import lombok.Setter;
 
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+// ... otros imports ...
 
-@Getter
-@Setter
 public class Banco {
+    private static final String ARCHIVO_DATOS = "banco.dat";
     private static Banco instancia;
     private List<Usuario> usuarios;
     private List<BilleteraVirtual> billeteras;
 
     private Banco() {
-        this.usuarios = new ArrayList<>();
-        this.billeteras = new ArrayList<>();
+        cargarDatos();
     }
 
     public static Banco getInstancia() {
@@ -31,6 +27,43 @@ public class Banco {
             instancia = new Banco();
         }
         return instancia;
+    }
+
+    // Método para guardar datos
+    public void guardarDatos() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream(ARCHIVO_DATOS))) {
+
+            // Guardamos ambos listados
+            oos.writeObject(usuarios);
+            oos.writeObject(billeteras);
+
+        } catch (IOException e) {
+            System.err.println("Error guardando datos: " + e.getMessage());
+        }
+    }
+
+    // Método para cargar datos
+    @SuppressWarnings("unchecked")
+    private void cargarDatos() {
+        File archivo = new File(ARCHIVO_DATOS);
+        if (archivo.exists()) {
+            try (ObjectInputStream ois = new ObjectInputStream(
+                    new FileInputStream(ARCHIVO_DATOS))) {
+
+                this.usuarios = (List<Usuario>) ois.readObject();
+                this.billeteras = (List<BilleteraVirtual>) ois.readObject();
+
+            } catch (IOException | ClassNotFoundException e) {
+                // Si hay error, inicializamos listas vacías
+                this.usuarios = new ArrayList<>();
+                this.billeteras = new ArrayList<>();
+                System.err.println("Error cargando datos: " + e.getMessage());
+            }
+        } else {
+            this.usuarios = new ArrayList<>();
+            this.billeteras = new ArrayList<>();
+        }
     }
 
     /**

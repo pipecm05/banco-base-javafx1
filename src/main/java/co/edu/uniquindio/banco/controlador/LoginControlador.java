@@ -57,9 +57,9 @@ public class LoginControlador {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/panelCliente.fxml"));
             Parent root = loader.load();
 
-            // Configurar datos del cliente en el panel si es necesario
+            // Obtenemos el controlador y llamamos a inicializarDatos
             PanelClienteControlador controlador = loader.getController();
-            // controlador.inicializarDatos(identificacion);
+            controlador.inicializarDatos(identificacion); // ¡Aquí pasamos la identificación!
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

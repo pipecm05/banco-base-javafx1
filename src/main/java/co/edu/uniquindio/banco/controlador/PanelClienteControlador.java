@@ -35,9 +35,9 @@ public class PanelClienteControlador {
             Usuario usuario = banco.buscarUsuario(identificacion);
             billetera = banco.buscarBilleteraUsuario(identificacion);
 
-            // Configurar labels
-            lblBienvenida.setText("Bienvenido, " + usuario.getNombre());
-            lblBilletera.setText("Número de billetera: " + billetera.getNumero());
+            // Configuramos los textos como solicitaste
+            lblBienvenida.setText(usuario.getNombre() + ", bienvenido a su banco");
+            lblBilletera.setText("Número de cuenta: " + billetera.getNumero());
 
             // Cargar transacciones
             cargarTransacciones();
@@ -90,16 +90,22 @@ public class PanelClienteControlador {
     }
 
     @FXML
-    private void actualizarPerfil() {
-        // Implementar lógica para actualizar perfil
-        mostrarAlerta("Actualizar Perfil", "Funcionalidad en desarrollo", Alert.AlertType.INFORMATION);
+    private void cerrarSesion() {
+        try {
+            // Guardar datos antes de cerrar
+            banco.guardarDatos();
+
+            Stage stage = (Stage) lblBienvenida.getScene().getWindow();
+            stage.close();
+
+            // Opcional: Mostrar ventana de inicio
+            new InicioControlador().navegarVentana("/inicio.fxml", "Banco");
+        } catch (Exception e) {
+            mostrarAlerta("Error", "No se pudieron guardar los datos: " + e.getMessage(),
+                    Alert.AlertType.ERROR);
+        }
     }
 
-    @FXML
-    private void cerrarSesion() {
-        Stage stage = (Stage) lblBienvenida.getScene().getWindow();
-        stage.close();
-    }
 
     private void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {
         Alert alert = new Alert(tipo);

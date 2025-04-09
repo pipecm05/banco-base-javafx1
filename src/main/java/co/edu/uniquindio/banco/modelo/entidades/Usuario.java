@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * Clase que representa un usuario del banco
  * @version 1.0
@@ -12,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Usuario {
+public class Usuario implements Serializable {
 
     private String id, nombre, direccion, email, password;
 
