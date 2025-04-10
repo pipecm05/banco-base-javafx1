@@ -54,10 +54,11 @@
     </TableView>
 
     <HBox spacing="10" alignment="CENTER">
-        <Button text="Consultar Saldo" onAction="#consultarSaldo" style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
-        <Button text="Realizar Transferencia" onAction="#mostrarTransferencia" style="-fx-background-color: #FF9800; -fx-text-fill: white;" />
-        <Button text="Recargar Cuenta" onAction="#mostrarRecarga" style="-fx-background-color: #8BC34A; -fx-text-fill: white;" />
-        <Button text="Cerrar Sesión" onAction="#cerrarSesion" style="-fx-background-color: #F44336; -fx-text-fill: white;" />
+        <Button text="Consultar Saldo" onAction="#consultarSaldo" style="-fx-background-color: #3c53e7; -fx-text-fill: white;" />
+        <Button text="Realizar Transferencia" onAction="#mostrarTransferencia" style="-fx-background-color: #346edb; -fx-text-fill: white;" />
+        <Button text="Recargar Cuenta" onAction="#mostrarRecarga" style="-fx-background-color: #3c53e7; -fx-text-fill: white;" />
+        <Button text="Cerrar Sesión" onAction="#cerrarSesion" style="-fx-background-color: #346edb; -fx-text-fill: white;" />
+        <Button text="Actualizar Datos" onAction="#actualizarDatos" style="-fx-background-color: #3c53e7; -fx-text-fill: white;"/>
     </HBox>
 
 </VBox>

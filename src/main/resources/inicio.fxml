@@ -32,8 +32,8 @@
     </Label>
 
     <HBox alignment="CENTER" spacing="20.0" >
-        <Button minWidth="130.0" minHeight="40.0" text="Iniciar sesión" onAction="#irIniciarSesion" style="-fx-background-color: #00807a; -fx-text-fill: white" />
-        <Button minWidth="130.0" minHeight="40.0" text="Registrarse" onAction="#irRegistroCliente" style="-fx-background-color: #00807a; -fx-text-fill: white" />
+        <Button minWidth="130.0" minHeight="40.0" text="Iniciar sesión" onAction="#irIniciarSesion" style="-fx-background-color: #346edb; -fx-text-fill: white" />
+        <Button minWidth="130.0" minHeight="40.0" text="Registrarse" onAction="#irRegistroCliente" style="-fx-background-color: #3c53e7; -fx-text-fill: white" />
     </HBox>
 
 </VBox>

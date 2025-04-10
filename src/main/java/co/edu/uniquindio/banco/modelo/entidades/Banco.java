@@ -232,7 +232,22 @@ public class Banco {
 
         billetera.depositar(monto, transaccion);
     }
+    public void actualizarUsuario(String id, String nombre, String direccion, String email) throws Exception {
+        Usuario usuario = buscarUsuario(id);
+        if (usuario == null) {
+            throw new Exception("Usuario no encontrado");
+        }
 
+        if (nombre == null || nombre.isEmpty()) {
+            throw new Exception("El nombre es obligatorio");
+        }
+
+        usuario.setNombre(nombre);
+        usuario.setDireccion(direccion);
+        usuario.setEmail(email);
+
+        guardarDatos(); // Persiste los cambios
+    }
     public void realizarTransferencia(String numeroBilleteraOrigen, String numeroBilleteraDestino, float monto, Categoria categoria) throws Exception{
         BilleteraVirtual billeteraOrigen = buscarBilletera(numeroBilleteraOrigen);
         BilleteraVirtual billeteraDestino = buscarBilletera(numeroBilleteraDestino);

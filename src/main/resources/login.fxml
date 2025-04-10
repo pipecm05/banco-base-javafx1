@@ -23,7 +23,7 @@
         <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" minHeight="30.0" />
     </GridPane>
 
-    <Button text="Iniciar Sesión" onAction="#iniciarSesion" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" />
+    <Button text="Iniciar Sesión" onAction="#iniciarSesion" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #346edb; -fx-text-fill: white" />
 
     <Label fx:id="lblMensaje" textFill="RED" visible="false" />
 

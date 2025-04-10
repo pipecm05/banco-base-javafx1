@@ -32,6 +32,6 @@
         <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="4" minHeight="30.0" />
     </GridPane>
 
-    <Button text="Registrarse" onAction="#registrarse" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #00807a; -fx-text-fill: white" />
+    <Button text="Registrarse" onAction="#registrarse" minHeight="40.0" minWidth="130.0" style="-fx-background-color: #3c53e7; -fx-text-fill: white" />
 
 </VBox>

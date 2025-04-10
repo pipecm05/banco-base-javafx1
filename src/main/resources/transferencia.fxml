@@ -24,7 +24,7 @@
     </GridPane>
 
     <Button text="Transferir" onAction="#realizarTransferencia"
-            style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"
+            style="-fx-background-color: #346edb; -fx-text-fill: white; -fx-font-weight: bold;"
             minWidth="100" minHeight="30" />
 
     <Label fx:id="lblMensaje" style="-fx-text-fill: red;" />

@@ -111,7 +111,25 @@ public class PanelClienteControlador {
             mostrarAlerta("Error", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
+    @FXML
+    private void actualizarDatos() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/actualizarDatos.fxml"));
+            Parent root = loader.load();
 
+            ActualizarDatosControlador controlador = loader.getController();
+            Stage stage = new Stage();
+            controlador.inicializar(identificacionUsuario, stage);
+
+            stage.setScene(new Scene(root));
+            stage.setTitle("Actualizar Datos");
+            stage.setResizable(false);
+            stage.show();
+
+        } catch (Exception e) {
+            mostrarAlerta("Error", "No se pudo abrir la ventana de actualización", Alert.AlertType.ERROR);
+        }
+    }
     @FXML
     private void cerrarSesion() {
         try {
